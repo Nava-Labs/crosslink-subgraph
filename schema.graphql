@@ -1,0 +1,22 @@
+type Activity @entity(immutable: true) {
+  id: ID!
+  type: String!
+  from: Bytes!
+  nftOrigin: BigInt!
+  saleOrigin: BigInt!
+  to: Bytes!
+  timestamp: BigInt!
+  price: BigInt
+  listedNFT: ListedNFT!
+}
+
+type ListedNFT @entity(immutable: false) { 
+  id: ID! #CollectionAddress-TokenID
+  collectionAddress: Bytes!
+  owner: Bytes!
+  uri: String!
+  price: BigInt
+  collectionName: String!
+  chainOrigin: BigInt!
+  activity: [Activity]! @derivedFrom(field: "listedNFT")
+}

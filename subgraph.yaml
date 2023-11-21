@@ -1,0 +1,30 @@
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: NFT
+    network: sepolia
+    source:
+      address: "0xBb7fBae7BC6075011E58f590973b43Da6566BA8C"
+      abi: CrosslinkMarketplace
+      startBlock: 41379057
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ListedNFT
+        - Activity
+      abis:
+        - name: CrosslinkMarketplace
+          file: ./abis/CrosslinkMarketplace.json
+        - name: ERC721
+          file: ./abis/ERC721.json
+      eventHandlers:
+        - event: Listing(indexed uint64,indexed address,indexed address,uint256,uint256)
+          handler: handleListed
+        - event: Sale(indexed uint8,indexed address,uint64,uint64,address,address,uint256,uint256)
+          handler: handleSale
+      file: ./src/Activity.ts
+
