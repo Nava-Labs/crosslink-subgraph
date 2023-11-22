@@ -15,8 +15,8 @@ export function handleListed(listedEvent: ListedEvent): void {
   }
   nft.collectionAddress = listedEvent.params.tokenAddress;
   nft.owner = listedEvent.params.ownerAddress;
-  nft.collectionName = fetchCollectionName(listedEvent.params.tokenAddress);
-  nft.uri = fetchUri(listedEvent.params.tokenAddress, listedEvent.params.tokenId)
+  nft.collectionName = listedEvent.params.collectionName;
+  nft.uri = listedEvent.params.tokenURI;
   nft.price = listedEvent.params.price;
   nft.chainOrigin = listedEvent.params.chainIdSelector;
 
@@ -66,8 +66,8 @@ export function handleSale(saleEvent: SaleEvent): void{
     nft = new ListedNFT(tokenId);
   }
 
-  nft.collectionName = fetchCollectionName(saleEvent.params.tokenAddress);
-  nft.uri = fetchUri(saleEvent.params.tokenAddress, saleEvent.params.tokenId);
+  nft.collectionName = saleEvent.params.collectionName;
+  nft.uri = saleEvent.params.tokenURI;
   nft.owner = saleEvent.params.newOwner;
   nft.collectionAddress = saleEvent.params.tokenAddress;
   activity.price = nft.price; //preserve the price
@@ -75,37 +75,4 @@ export function handleSale(saleEvent: SaleEvent): void{
   activity.listedNFT = tokenId;
   nft.save();
   activity.save();
-}
-
-export function fetchCollectionName(collectionAddr: Address): string {
-  let contract = ERC721.bind(collectionAddr);
-  let data = "";
-  let result = contract.try_name()
-  if (result.reverted) {
-  } else {
-    data = result.value
-  }
-  return data
-}
-
-export function fetchNftOwner(collectionAddr: Address, tokenId: BigInt): Bytes {
-  let contract = ERC721.bind(collectionAddr);
-  let owner = collectionAddr;
-  let result = contract.try_ownerOf(tokenId)
-  if (result.reverted) {
-  } else {
-    owner = result.value
-  }
-  return owner
-}
-
-export function fetchUri(collectionAddr: Address, tokenId: BigInt): string {
-  let contract = ERC721.bind(collectionAddr);
-  let data = "";
-  let result = contract.try_tokenURI(tokenId)
-  if (result.reverted) {
-  } else {
-    data = result.value
-  }
-  return data
 }
