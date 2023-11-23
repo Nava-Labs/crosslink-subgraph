@@ -2,8 +2,7 @@ type Activity @entity(immutable: true) {
   id: ID!
   type: String!
   from: Bytes!
-  nftOrigin: BigInt!
-  saleOrigin: BigInt!
+  activityOrigin: BigInt!
   to: Bytes!
   timestamp: BigInt!
   price: BigInt

@@ -6,9 +6,9 @@ dataSources:
     name: NFT
     network: sepolia
     source:
-      address: "0x57EC3cbd06052d302F1B6D94DC6E497E51223436"
+      address: "0xEd14e31E9F30d2eD515707154C7ada747b98949d"
       abi: CrosslinkMarketplace
-      startBlock: 4743659
+      startBlock: 4749422
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -24,7 +24,6 @@ dataSources:
       eventHandlers:
         - event: Listing(indexed uint64,indexed address,indexed address,string,uint256,string,uint256)
           handler: handleListed
-        - event: Sale(indexed uint8,indexed address,uint64,uint64,address,address,string,uint256,string,uint256)
+        - event: Sale(indexed uint8,indexed address,uint64,uint64,address,address,uint256,uint256)
           handler: handleSale
       file: ./src/Activity.ts
-
