@@ -64,38 +64,8 @@
   },
   {
     "inputs": [],
-    "name": "Unauthorized",
-    "type": "error"
-  },
-  {
-    "inputs": [],
     "name": "UnauthorizedChainSelector",
     "type": "error"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "userAddress",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "tokenAddress",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      }
-    ],
-    "name": "Cancel",
-    "type": "event"
   },
   {
     "anonymous": false,
@@ -263,21 +233,9 @@
       },
       {
         "indexed": false,
-        "internalType": "string",
-        "name": "collectionName",
-        "type": "string"
-      },
-      {
-        "indexed": false,
         "internalType": "uint256",
         "name": "tokenId",
         "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "string",
-        "name": "tokenURI",
-        "type": "string"
       },
       {
         "indexed": false,
@@ -358,24 +316,6 @@
       }
     ],
     "name": "buy",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "tokenAddress",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      }
-    ],
-    "name": "cancelListing",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -526,9 +466,9 @@
             "type": "address"
           }
         ],
-        "internalType": "struct CCIPDirectory.CrossChainMetadataAddress[5]",
+        "internalType": "struct CCIPDirectory.CrossChainMetadataAddress[6]",
         "name": "",
-        "type": "tuple[5]"
+        "type": "tuple[6]"
       }
     ],
     "stateMutability": "view",
@@ -603,6 +543,19 @@
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "listingMessageId",
+    "outputs": [
+      {
+        "internalType": "bytes4",
+        "name": "",
+        "type": "bytes4"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "address",
@@ -647,6 +600,32 @@
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "saleMessageId",
+    "outputs": [
+      {
+        "internalType": "bytes4",
+        "name": "",
+        "type": "bytes4"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_tokenPayment",
+        "type": "address"
+      }
+    ],
+    "name": "setTokenPayment",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
