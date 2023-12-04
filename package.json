@@ -4,8 +4,8 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "create-local": "graph create --node http://localhost:8020/ erwinphanglius/crosslink-subgraph",
-    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ erwinphanglius/crosslink-subgraph"
+    "create-local": "graph create --node http://localhost:8020/ erwinphanglius/crc-nft-marketplace",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ erwinphanglius/crc-nft-marketplace"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.59.0",

@@ -6,9 +6,9 @@ dataSources:
     name: NFT
     network: sepolia
     source:
-      address: "0xEd14e31E9F30d2eD515707154C7ada747b98949d"
-      abi: CrosslinkMarketplace
-      startBlock: 4749422
+      address: "0xd88b22CBB849232A93e5BC6c61D4195709C39dE4"
+      abi: NFTMarketplace
+      startBlock: 4788279
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -17,8 +17,8 @@ dataSources:
         - ListedNFT
         - Activity
       abis:
-        - name: CrosslinkMarketplace
-          file: ./abis/CrosslinkMarketplace.json
+        - name: NFTMarketplace
+          file: ./abis/NFTMarketplace.json
         - name: ERC721
           file: ./abis/ERC721.json
       eventHandlers:
